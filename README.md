@@ -1,2 +1,2 @@
-# postgres-retrofit
-Tools to create database specific text value embeddings from word embedding datasets
+# RETRO: Relation Retrofitting For In-Database Machine Learning on Textual Data
+RETRO is a framework that provides tools to automatically extract text values from a PostgreSQL database, represent those text values by a continuous vector representation using a word embedding model. In order to incorporate semantic knowledge from the database into the representation, it extracts additional relational information from the database and uses this knowledge to refine the embeddings by a relational retrofitting method. The resulting embeddings can then be used to perform machine learning tasks.
