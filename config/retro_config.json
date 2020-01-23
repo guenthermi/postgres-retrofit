@@ -12,7 +12,7 @@
   "RETRO_VECS_FILE_NAME": "output/retrofitted_vectors.wv",
   "TOKENIZATION": "simple",
   "ALPHA": 1.0,
-  "BETA": 1.0,
-  "GAMMA": 2.0,
-  "DELTA": 1.0
+  "BETA": 0.0,
+  "GAMMA": 3.0,
+  "DELTA": 3.0
 }
