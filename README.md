@@ -37,12 +37,12 @@ As one example of a machine learning task, you can run a category imputation tas
 ### Create the Database
 
 The script provided in [google-play-dataset-import](https://github.com/guenthermi/google-play-dataset-import) can be used to create a database containing the data from the App Store dataset.
-In oder to setup the database, clone the repository and follow the instruction in the README file.
+In order to set up the database, clone the repository and follow the instruction in the README file.
 
 ### Configuration
 
 The configuration files `ml/retro_config.json`, `ml/db_config.json` and `ml/db_config.json` have to be adapted to your database.
-By using the default configuration in `ml/retro_config.json` the category and genre property are ignored, since those are the properties we want to predict wih our classifier.
+By using the default configuration in `ml/retro_config.json` the category and genre property are ignored since those are the properties we want to predict with our classifier (often the genre property equals the category).
 
 ### Retrofitting
 
