@@ -1,0 +1,18 @@
+{
+  "WE_ORIGINAL_TABLE_NAME": "google_vecs",
+  "RETRO_TABLE_CONFS": ["ml/retro_vecs.config"],
+  "SCHEMA_GRAPH_PATH": "output/schema.gml",
+  "SCHEMA_JSON_GRAPH_PATH": "output/schema.json",
+  "TABLE_BLACKLIST": ["google_vecs", "retro_vecs", "retro_vecs_norm", "plain_vecs"],
+  "COLUMN_BLACKLIST": ["categories.name", "genres.name"],
+  "RELATION_BLACKLIST":  [],
+  "OUTPUT_FOLDER": "output",
+  "GROUPS_FILE_NAME": "output/groups.json",
+  "ITERATIONS": 10,
+  "RETRO_VECS_FILE_NAME": "output/retrofitted_vectors.wv",
+  "TOKENIZATION": "simple",
+  "ALPHA": 1.0,
+  "BETA": 0.0,
+  "GAMMA": 3.0,
+  "DELTA": 3.0
+}

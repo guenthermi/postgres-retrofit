@@ -1,0 +1,7 @@
+{
+  "table_names": ["retro_vecs"],
+  "query": "SELECT r.id, a.category_id, r.vector FROM apps AS a INNER JOIN {vec_table} AS r ON r.word = concat('apps.name#', regexp_replace(a.name, '[\\.#~\\s\\xa0,\\(\\)/\\[\\]:]+', '_', 'g'))",
+  "train-size": 400,
+  "test-size": 400,
+  "output_folder": "output/"
+}

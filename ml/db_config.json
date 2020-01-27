@@ -1,0 +1,1 @@
+{"username": "postgres","password": "postgres","host": "localhost","db_name": "apps_db","batch_size": 50000,"log": ""}

@@ -23,8 +23,44 @@ python3 core/vec2database.py config/google_vecs.config config/db_config.json
 
 In order to execute RETRO, you might reconfigure `config/retro_config.json`.
 For example, in the `TABLE_BLACKLIST` property, you can define tables that should be ignored by the retrofitting.
-You can start the retrofitting by executing the following command:
+You can start the retrofitting by executing the following commands:
 ```
+mkdir output
 python3 core/run_retrofitting.py config/retro_config.json config/db_config.json
 ```
 After the script is passed through, you can find the results in the table `retro_vecs` in the PostgreSQL database and the file `output/retrofitted_vectors.wv`.
+
+## Example ML Task
+
+As one example of a machine learning task, you can run a category imputation task on a dataset of [Google Play Store Apps](https://www.kaggle.com/lava18/google-play-store-apps).
+
+### Create the Database
+
+The script provided in [google-play-dataset-import](https://github.com/guenthermi/google-play-dataset-import) can be used to create a database containing the data from the App Store dataset.
+In oder to setup the database, clone the repository and follow the instruction in the README file.
+
+### Configuration
+
+The configuration files `ml/retro_config.json`, `ml/db_config.json` and `ml/db_config.json` have to be adapted to your database.
+By using the default configuration in `ml/retro_config.json` the category and genre property are ignored, since those are the properties we want to predict wih our classifier.
+
+### Retrofitting
+
+First, relational retrofitting has to be executed on the database.
+Given a word embedding model is imported to the database as described above, retrofitting can be executed as follows:
+
+```
+mkdir output
+python3 core/run_retrofitting.py ml/retro_config.json ml/db_config.json
+```
+
+### Run Classification
+
+After executing the retrofitting, the classification can be started.
+The category imputation task can be performed with `ml/multi_class_prediction.py`:
+
+```
+python3 ml/multi_class_prediction.py ml/db_config.json ml/classify_app_categories_config.json
+```
+
+After running and evaluating the classification, this should output a results file and a box-plot diagram in the output folder defined in `ml/classify_app_categories_config.json` (default: `output/`).
