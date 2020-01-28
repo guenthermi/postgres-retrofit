@@ -3,6 +3,8 @@ RETRO is a framework that provides tools to automatically extract text values fr
 In order to incorporate semantic knowledge from the database into the representation, it extracts additional relational information from the database and uses this knowledge to refine the embeddings by a relational retrofitting method.
 The resulting embeddings can then be used to perform machine learning tasks.
 
+For more details about the algorithm, take a look at the [paper](https://arxiv.org/abs/1911.12674).
+
 ## Setup
 
 In order to connect to a PostgreSQL database, you have to configure the database connection in the `config/db_config.json`.
