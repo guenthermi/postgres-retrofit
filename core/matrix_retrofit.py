@@ -16,7 +16,7 @@ import config
 import db_connection as db_con
 import retro_utils as utils
 
-NUM_THREADS = 5
+NUM_THREADS = 2
 MIN_GROUP_SIZE = 2
 
 
