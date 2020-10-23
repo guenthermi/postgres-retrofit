@@ -56,7 +56,7 @@ mkdir output
 python3 core/run_retrofitting.py ml/retro_config.json ml/db_config.json
 ```
 
-### Run Classification
+### Classification with Feed-Forward Network
 
 After executing the retrofitting, the classification can be started.
 The category imputation task can be performed with `ml/multi_class_prediction.py`:
@@ -66,3 +66,26 @@ python3 ml/multi_class_prediction.py ml/db_config.json ml/classify_app_categorie
 ```
 
 After running and evaluating the classification, this should output a results file and a box-plot diagram in the output folder defined in `ml/classify_app_categories_config.json` (default: `output/`).
+
+### Classification with Graph Neural Network
+
+Alternatively, a classification can be performed with graph neural networks by using `ml/gnn/gnn_imputation.py` or `ml/gnn/gnn_imputation_fast.py`.
+Both scripts require the following arguments:
+* *retro_config*: configuration file of the previously executed retrofitting process
+* *query*: a query to read out the data for the classification from the database
+* *train_size*: number of training samples
+* *test_size*: number of test samples
+* *iterations*: number of evaluation iterations
+* *retro_table*: name of the table with the retrofitted vectors
+
+The script `ml/gnn/gnn_imputation_fast.py` employs neighbor sampling to sped up the GNN model.
+The evaluation of the models on the app database can be executed as follows:
+```
+python3 ml/gnn/gnn_imputation.py config/retro_config.json config/db_config.json "SELECT r.id, r.word, a.category_id, r.vector FROM apps AS a INNER JOIN {vec_table} AS r ON r.word = concat('apps.name#', regexp_replace(a.name, '[\\.#~\\s\\xa0,\\(\\)/\\[\\]:]+', '_', 'g'))" 400 400 3 retro_vecs
+```
+
+Here are some results of the evaluation on common word embedding datasets (more details are provided in the [publication](https://dl.acm.org/doi/10.1145/3340531.3412056)):
+![Missing Value Imputation of Google Play Store Apps](ml/evaluation_results.png)
+
+## References
+[Learning from Textual Data in Database Systems](https://dl.acm.org/doi/10.1145/3340531.3412056)
