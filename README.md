@@ -3,7 +3,7 @@ RETRO is a framework that provides tools to automatically extract text values fr
 In order to incorporate semantic knowledge from the database into the representation, it extracts additional relational information from the database and uses this knowledge to refine the embeddings by a relational retrofitting method.
 The resulting embeddings can then be used to perform machine learning tasks.
 
-For more details about the algorithm, take a look at the [paper](https://arxiv.org/abs/1911.12674).
+For more details about the algorithm, take a look at the [paper](https://dl.acm.org/doi/10.1145/3340531.3412056).
 
 ## Setup
 
@@ -84,7 +84,8 @@ The evaluation of the models on the app database can be executed as follows:
 python3 ml/gnn/gnn_imputation.py config/retro_config.json config/db_config.json "SELECT r.id, r.word, a.category_id, r.vector FROM apps AS a INNER JOIN {vec_table} AS r ON r.word = concat('apps.name#', regexp_replace(a.name, '[\\.#~\\s\\xa0,\\(\\)/\\[\\]:]+', '_', 'g'))" 400 400 3 retro_vecs
 ```
 
-Here are some results of the evaluation on common word embedding datasets (more details are provided in the [publication](https://dl.acm.org/doi/10.1145/3340531.3412056)):
+Here are some results of the evaluation on common word embedding datasets (details can be found in the [publication](https://dl.acm.org/doi/10.1145/3340531.3412056)):
+
 ![Missing Value Imputation of Google Play Store Apps](ml/evaluation_results.png)
 
 ## References
