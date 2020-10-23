@@ -89,4 +89,4 @@ Here are some results of the evaluation on common word embedding datasets (detai
 ![Missing Value Imputation of Google Play Store Apps](ml/evaluation_results.png)
 
 ## References
-[Learning from Textual Data in Database Systems](https://dl.acm.org/doi/10.1145/3340531.3412056)
+[Michael Günther, Philipp Oehme, Maik Thiele, and Wolfgang Lehner. 2020. Learning from Textual Data in Database Systems. In Proceedings of the 29th ACM International Conference on Information & Knowledge Management (CIKM '20). ACM, New York, NY, USA, 375–384. DOI:https://doi.org/10.1145/3340531.3412056](https://dl.acm.org/doi/10.1145/3340531.3412056)
